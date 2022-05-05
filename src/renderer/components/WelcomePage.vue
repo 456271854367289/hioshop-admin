@@ -6,17 +6,14 @@
             </el-breadcrumb>
         </div>
         <div class="content-main clearfix">
-            <div class="notice">
+            <!-- <div class="notice">
                 <div class="l">本演示后台数据为演示数据，可以随意操作，系统每5分钟重置一次</div>
                 <div class="r" v-if="resetVision">
                     <label>重置倒计时：</label>
                     <countdown class="count" endTime="" :callback="callback" endText="已经结束了"></countdown>
                 </div>
-            </div>
-            <div class="github">
-                <a target="_blank" href="https://github.com/iamdarcy">github地址</a>
-                <div class="l">请您在github给个star。 技术交流QQ群：824781955</div>
-            </div>
+            </div> -->
+
             <div class="header clearfix">
                 <el-card class="box-card card-red">
                     <router-link class="link-color" :to="{ path: '/dashboard/order' }">
@@ -113,7 +110,7 @@
                     </el-card>
                 </div>
                 <div class="line clearfix"></div>
-                <div class="block-4 clearfix">
+                <!-- <div class="block-4 clearfix">
                     <el-card class="box-card">
                         <div class="text item">
                             <span>客单价</span>
@@ -144,7 +141,7 @@
                         </div>
                         <p class="tips">支付人数/访问人数</p>
                     </el-card>
-                </div>
+                </div> -->
 
             </div>
         </div>

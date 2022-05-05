@@ -2,22 +2,15 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <!--<el-breadcrumb-item :to="{ name: 'dashboard' }">首页</el-breadcrumb-item>-->
                 <el-breadcrumb-item :to="{ name: 'order' }">订单管理</el-breadcrumb-item>
                 <el-breadcrumb-item>{{infoForm.order_sn ? '订单详情' : '添加订单'}}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
                 <el-button type="primary" @click="goBackPage" size="small" icon="arrow-left">返回列表</el-button>
-                <!--<el-button type="primary" @click="test" size="small" icon="arrow-left">test</el-button>-->
             </div>
         </div>
         <div class="order-status-text">
             <label>{{infoForm.order_status_text}}</label>
-            <div>
-                <el-button type="danger" plain @click="changeStatus">变更状态</el-button>
-                <!--<el-button v-if="infoForm.order_status == 201" type="danger" @click="goPackage">备货</el-button>-->
-                <!--<el-button v-if="infoForm.order_status == 300" type="primary" @click="goPackage">发货</el-button>-->
-            </div>
         </div>
         <div class="content-main">
             <div class="form-table-box">
@@ -36,12 +29,6 @@
                             <el-table-column prop="mobile" label="客户手机" width="120"></el-table-column>
                             <el-table-column prop="address" label="客户地址"></el-table-column>
                             <el-table-column prop="postscript" label="买家备注" width="300"></el-table-column>
-                            <el-table-column label="操作">
-                                <template scope="scope">
-                                    <el-button size="small" @click="addressEdit(scope.$index, scope.row)">编辑
-                                    </el-button>
-                                </template>
-                            </el-table-column>
                         </el-table>
                         <div class="content-title marginTop">货物信息：</div>
                         <el-table :data="infoForm.goodsList" style="width: 100%" border stripe>
@@ -61,33 +48,12 @@
                                     <label>{{scope.row.retail_price * scope.row.number }}</label>
                                 </template>
                             </el-table-column>
-                            <el-table-column label="操作">
-                                <template scope="scope">
-                                    <el-button size="small" @click="goodsListEdit(scope.$index, scope.row)">编辑
-                                    </el-button>
-                                    <el-button size="small" type="danger"
-                                               @click="handleRowDelete(scope.$index, scope.row)">删除
-                                    </el-button>
-                                </template>
-                            </el-table-column>
                         </el-table>
                         <div class="detail-wrap">
                             <div class="total-price"> 优惠：¥{{infoForm.promotions_price}}</div>
                             <div class="total-price"> 合计：¥{{infoForm.actual_price}}（含运费：¥{{infoForm.freight_price}}）</div>
                             <div class="total-price"> 改价前：¥{{infoForm.change_price}}（含运费：¥{{infoForm.freight_price}}）</div>
                             <div class="total-price"> {{infoForm.change_price-infoForm.actual_price>0?'优惠金额：'+(infoForm.change_price-infoForm.actual_price).toFixed(2):'涨价金额：'+(infoForm.actual_price- infoForm.change_price).toFixed(2)}}</div>
-                        </div>
-                        <div class="memo-wrap">
-                            <div class="content-title">卖家备注：</div>
-                            <el-input
-                                    class="memo-input"
-                                    type="textarea"
-                                    autosize
-                                    placeholder="请输入内容"
-                                    v-model="infoForm.admin_memo">
-                            </el-input>
-                            <el-button size="small" type="primary" @click="saveAdminMemo">保存
-                            </el-button>
                         </div>
 
                         <div class="footer">
@@ -122,33 +88,7 @@
                         </div>
 
                     </el-tab-pane>
-                    <el-tab-pane label="物流信息" name="second">
-                        <div class="no-traces" v-if="expressData.logistic_code == ''">暂无物流信息</div>
-                        <div class="has-traces" v-else>
-                            <p>
-                                <label>快递公司：</label>
-                                <span>{{expressData.shipper_name}}</span>
-                            </p>
-                            <p>
-                                <label>快递单号：</label>
-                                <span>{{expressData.logistic_code}}</span>
-                            </p>
-                            <p>
-                                <label>快递轨迹：</label>
-                            </p>
-                            <div v-if="on_posting == 1" class="posting">正在查询，请稍候...</div>
-
-                            <ul class="traces-wrap">
-                                <li class="traces-list" v-for="item in expressData.traces">
-                                    <div class="traces-time">{{item.time}}</div>
-                                    <div class="traces-content">{{item.status}}</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </el-tab-pane>
                 </el-tabs>
-
-                <!--<div class="content-title">买家信息：</div>-->
 
             </div>
         </div>
@@ -399,12 +339,6 @@
                     this.goodsData.number = number;
                     this.goodsData.addOrMinus = addOrMinus;
                     this.axios.post('order/saveGoodsList', this.goodsData).then((response) => {
-//                        console.log(response.data);
-//                        this.dialogGoodsListVisible = false;
-//                        this.infoForm.order_sn = response.data.data;
-//
-//                        this.addressData = [];
-//                        this.getInfo();
                         this.$router.go(-1);
                     })
                 }
@@ -482,7 +416,9 @@
                 })
             },
             getInfo() {
+                console.log("conin");
                 if (this.infoForm.id <= 0) {
+                    console.log("ok");
                     return false
                 }
                 this.axios.get('order/detail', {
@@ -519,8 +455,8 @@
         },
         components: {ElButton},
         mounted() {
-//            console.log(this.$route.query);
             this.infoForm.id = this.$route.query.id || 0;
+           console.log(this.infoForm.id);
             this.getInfo();
             this.getAllRegion();
         }

@@ -38,7 +38,7 @@
                                 :data="picData"
                                 :before-upload="getQiniuToken"
                         >
-                            <el-button v-if="!infoForm.img_url" size="small" type="primary">点击上传</el-button>
+                            <el-button  size="small" type="primary">点击上传</el-button>
                         </el-upload>
                         <div class="form-tip">图片尺寸：顶级分类为690*自定义, 只能上传jpg/png文件</div>
                     </el-form-item>
@@ -58,7 +58,7 @@
                                 :on-success="handleUploadIconSuccess"
                                 :before-upload="getQiniuToken"
                         >
-                            <el-button v-if="!infoForm.icon_url" size="small" type="primary">点击上传</el-button>
+                            <el-button  size="small" type="primary">点击上传</el-button>
                         </el-upload>
 
                         <div class="form-tip">图片尺寸：图标250*250, 只能上传jpg/png文件</div>

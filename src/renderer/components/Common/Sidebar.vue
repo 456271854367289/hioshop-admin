@@ -1,8 +1,8 @@
 <template>
     <div class="left-box">
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="static/images/loading2.gif"/>
-        </div>
+        </div> -->
 		<div class="a" style="overflow-x: hidden;overflow-y: scroll;height: 100%;">
 			<el-menu class="sidebar" :unique-opened="true" :default-active="currentPagePath" @open="handleOpen"
 					 :router="true" @close="handleClose">
@@ -28,10 +28,6 @@
 						<span>商品设置</span>
 					</el-menu-item>
 				</el-submenu>
-				<el-menu-item index="/dashboard/shopcart">
-					<i class="fa fa-large fa-shopping-cart"></i>
-					<span>购物车</span>
-				</el-menu-item>
 				<el-menu-item index="/dashboard/user">
 					<i class="fa fa-large fa-users"></i>
 					<span>用户列表</span>
@@ -49,22 +45,10 @@
 						<i class="fa fa-circle"></i>
 						<span>广告列表</span>
 					</el-menu-item>
-					<el-menu-item index="/dashboard/notice">
-						<i class="fa fa-circle"></i>
-						<span>公告管理</span>
-					</el-menu-item>
-					<el-menu-item index="/dashboard/freight">
-						<i class="fa fa-circle"></i>
-						<span>运费模板</span>
-					</el-menu-item>
-					<el-menu-item index="/dashboard/shipper">
-						<i class="fa fa-circle"></i>
-						<span>快递设置</span>
-					</el-menu-item>
-					<el-menu-item index="/dashboard/admin">
+					<!-- <el-menu-item index="/dashboard/admin">
 						<i class="fa fa-circle"></i>
 						<span>管理员</span>
-					</el-menu-item>
+					</el-menu-item> -->
 				</el-submenu>
 				<el-menu-item @click="logout">
 					<i class="fa fa-large fa-sign-out"></i>

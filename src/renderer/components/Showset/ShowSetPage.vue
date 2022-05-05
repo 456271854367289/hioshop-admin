@@ -18,12 +18,12 @@
                             <el-radio :label="0">不显示</el-radio>
                         </el-radio-group>
                     </el-form-item>
-                    <el-form-item label="公告">
+                    <!-- <el-form-item label="公告">
                         <el-radio-group v-model="infoForm.notice">
                             <el-radio :label="1">显示</el-radio>
                             <el-radio :label="0">不显示</el-radio>
                         </el-radio-group>
-                    </el-form-item>
+                    </el-form-item> -->
                     <el-form-item label="广告下的图标">
                         <el-radio-group v-model="infoForm.channel">
                             <el-radio :label="1">显示</el-radio>

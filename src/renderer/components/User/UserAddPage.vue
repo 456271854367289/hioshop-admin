@@ -101,7 +101,7 @@
                             <div class="user-post">{{item.postscript}}</div>
                         </div>
                         <div class="right">
-                            <el-button class="right-detail" type="text" @click="viewDetail(item.order_sn)"
+                            <el-button class="right-detail" type="text" @click="viewDetail(item.id)"
                                        size="mini">
                                 查看详情
                             </el-button>
@@ -264,7 +264,8 @@
                 this.dialogAddressVisible = true
             },
             viewDetail(index) {
-                this.$router.push({name: 'order_detail', query: {order_sn: index}})
+                console.log("order",index);
+                this.$router.push({name: 'order_detail', query: {id: index}})
             },
             handleClick(tab, event) {
                 let pindex = tab._data.index;
